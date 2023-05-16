@@ -1,9 +1,7 @@
 name: Test connect Azure
 on:
-  push:
-    branches: [ "main" ]
-  release:
-    types: [published]
+  workflow_dispatch:
+    
 permissions:
       id-token: write
       contents: read
@@ -11,8 +9,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Az CLI login'
-        uses: azure/login@v1
+      - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}'
   
