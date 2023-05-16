@@ -1,0 +1,25 @@
+name: Run Azure Login with OIDC
+on:
+  push:
+    branches: [ "main" ]
+  release:
+    types: [published]
+permissions:
+      id-token: write
+      contents: read
+jobs: 
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Az CLI login'
+        uses: azure/login@v1
+        with:
+          client-id: 72327091-91c9-40ce-8bde-65da5f3d2bd5
+          tenant-id: cb89cec0-6c66-45bf-8c88-35c6804a3f7b
+          subscription-id: ae1341e0-f73e-4bec-b7af-3e39378abaed
+  
+      - name: 'Run az commands'
+        run: |
+          az account show
+          az group list
+          pwd 
