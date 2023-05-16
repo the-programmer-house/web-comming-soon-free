@@ -5,18 +5,11 @@ on:
 jobs: 
   build-and-deploy:
     runs-on: ubuntu-latest
-    steps:
-      - run: 'echo "$SSH_KEY" > key'
-        shell: bash
-        env:
-         SSH_KEY: ${{secrets.AZURE_CREDENTIALS}}
-      - name: Check out repository
-        uses: actions/checkout@v2        
+    steps:       
       - name: 'Log into Azure using github secret AZURE_CREDENTIALS'
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-          allow-no-subscriptions: true
+          creds: ${{ secrets.MSND_SECRET }}
       - name: 'Run az commands'
         run: |
           az account show
