@@ -10,7 +10,10 @@
 name: Publish Docker image
 
 on:
-  workflow_dispatch 
+  workflow_dispatch:
+    inputs:
+      usernae:
+        description: 'UsernameFlow'
   #push:
    # branches: [ "main" ]
   #release:
