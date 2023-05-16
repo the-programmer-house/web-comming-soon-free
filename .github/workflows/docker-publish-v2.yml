@@ -17,6 +17,7 @@ jobs:
           client-id: '08c927b4-2318-4e51-9499-d3b1e95f2e68'
           tenant-id: 'cb89cec0-6c66-45bf-8c88-35c6804a3f7b'
           subscription-id: 'ae1341e0-f73e-4bec-b7af-3e39378abaed'
+          enable-AzPSSession: true
   
       - name: 'Run az commands'
         run: |
