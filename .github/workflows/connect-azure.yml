@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}'
+          creds: ${{ secrets.AZURE_CREDENTIALS_ITX }}'
   
       - name: 'Run az commands'
         run: |
