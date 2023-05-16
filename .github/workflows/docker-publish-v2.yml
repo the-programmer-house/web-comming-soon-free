@@ -41,5 +41,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: 1.0
-          labels: app-web-free
+          tags: theprogrammerhouse/app-web-free:1.0
