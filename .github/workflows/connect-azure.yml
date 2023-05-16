@@ -1,17 +1,18 @@
-name: Test connect Azure
+name: Authenticate Azure
 on:
   workflow_dispatch:
-    
-permissions:
-      id-token: write
-      contents: read
+
 jobs: 
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: azure/login@v1
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: 'Log into Azure using github secret AZURE_CREDENTIALS_ITX'
+        uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS_ITX }}'
+          enable-AzPSSession: true
   
       - name: 'Run az commands'
         run: |
