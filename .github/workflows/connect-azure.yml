@@ -11,13 +11,11 @@ jobs:
         env:
          SSH_KEY: ${{secrets.AZURE_CREDENTIALS}}
       - name: Check out repository
-        uses: actions/checkout@v2
-      - name: 'Log into Azure using github secret AZURE_CREDENTIALS_ITX'
+        uses: actions/checkout@v2        
+      - name: 'Log into Azure using github secret AZURE_CREDENTIALS'
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}'
-          enable-AzPSSession: true
-  
+          creds: ${{ secrets.AZURE_CREDENTIALS }}'  
       - name: 'Run az commands'
         run: |
           az account show
