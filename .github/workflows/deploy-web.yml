@@ -64,12 +64,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:       
       - name: 'Log into Azure using github secret AZURE_CREDENTIALS'
-        uses: azure/login@v1
+        uses: azure/login@v2
         with:
           creds: ${{ secrets.MSND_SECRET }}
           
       - name: Azure CLI script to show message
-        uses: azure/CLI@v1
+        uses: azure/CLI@v2
         with:
           azcliversion: latest
           inlineScript: |
@@ -77,7 +77,8 @@ jobs:
             az group list
             pwd   
           
-      - uses: Azure/webapps-deploy@v2
+      - name: Put image in web app
+        uses: azure/webapps-deploy@v2
         with: 
           app-name: 'itexperts'
           publish-profile: ${{ secrets.WEBSITE_WEBDEPLOY_USE_SCM }}
