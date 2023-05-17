@@ -55,7 +55,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: theprogrammerhouse/app-web-free:1.0.1
+          tags: theprogrammerhouse/app-web-free:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -67,6 +67,11 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.MSND_SECRET }}
+      - uses: azure/webapps-container-deploy@v1
+        with: 
+          app-name: itexperts
+          images: theprogrammerhouse/app-web-free:latest
+          
       - name: 'Run az commands'
         run: |
           az account show
