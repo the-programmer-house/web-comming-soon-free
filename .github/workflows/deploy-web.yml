@@ -79,6 +79,7 @@ jobs:
           
       - uses: Azure/webapps-deploy@v2
         with: 
-          app-name: itexperts
-          images: theprogrammerhouse/app-web-free:latest
+          app-name: 'itexperts'
+          publish-profile: ${{ secrets.WEBSITE_WEBDEPLOY_USE_SCM }}
+          images: 'theprogrammerhouse/app-web-free:latest'
           
