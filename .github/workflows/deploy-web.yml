@@ -67,13 +67,18 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.MSND_SECRET }}
+          
+      - name: Azure CLI script to show message
+        uses: azure/CLI@v1
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az account show
+            az group list
+            pwd   
+          
       - uses: azure/webapps-container-deploy@v1
         with: 
           app-name: itexperts
           images: theprogrammerhouse/app-web-free:latest
           
-      - name: 'Run az commands'
-        run: |
-          az account show
-          az group list
-          pwd 
